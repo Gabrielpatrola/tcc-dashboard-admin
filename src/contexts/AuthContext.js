@@ -17,6 +17,7 @@ export function AuthProvider({ children }) {
     const usersDbRef = collection(db, 'users')
 
     return auth.createUserWithEmailAndPassword(email, password).then((item) => {
+      console.log(item)
       return addDoc(usersDbRef, {
         created: serverTimestamp(),
         name: item.user.displayName,

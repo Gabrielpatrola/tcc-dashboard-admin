@@ -73,7 +73,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Criar Usuário',
-        to: '/base/accordion',
+        to: '/users/create',
       },
       {
         component: CNavItem,
