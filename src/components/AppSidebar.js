@@ -16,7 +16,7 @@ import navigation from '../_nav'
 
 const AppSidebar = () => {
   return (
-    <CSidebar position="fixed" unfoldable={true} visible={true} onVisibleChange={(visible) => {}}>
+    <CSidebar position="fixed" unfoldable={false} visible={true} onVisibleChange={(visible) => {}}>
       <CSidebarBrand className="d-none d-md-flex" to="/">
         <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />
         <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />

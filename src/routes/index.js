@@ -12,10 +12,8 @@ const loading = (
 
 // Pages
 const Login = React.lazy(() => import('../views/pages/login/Login'))
-const Dashboard = React.lazy(() => import('../views/dashboard/Dashboard'))
-/* const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
-const Page500 = React.lazy(() => import('./views/pages/page500/Page500')) */
-
+const Dashboard = React.lazy(() => import('../views/pages/dashboard/Dashboard'))
+const Products = React.lazy(() => import('../views/pages/products/Products'))
 class App extends Component {
   render() {
     return (
@@ -23,11 +21,9 @@ class App extends Component {
         <React.Suspense fallback={loading}>
           <AuthProvider>
             <Switch>
+              <PrivateRoute exact path="/products" name="products" component={Products} />
               <PrivateRoute exact path="/dashboard" name="dashboard" component={Dashboard} />
-              {/*      <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            <Route path="/signup" component={Signup} /> */}
               <Route path="/" component={Login} />
-              {/*     <Route path="/forgot-password" component={ForgotPassword} /> */}
             </Switch>
           </AuthProvider>
         </React.Suspense>
