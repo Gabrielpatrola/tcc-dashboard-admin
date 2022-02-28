@@ -27,12 +27,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Listar Produtos',
-        to: '/base/accordion',
+        to: '/products',
       },
       {
         component: CNavItem,
         name: 'Criar Produto',
-        to: '/base/accordion',
+        to: '/products/create',
       },
       {
         component: CNavItem,
