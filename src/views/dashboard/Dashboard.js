@@ -154,8 +154,7 @@ const Dashboard = () => {
       setError('')
       setLoading(true)
       console.log('aq', emailRef.current.value, passwordRef.current.value)
-     
-     
+
       FirestoreService.createGroceryList(emailRef.current.value, passwordRef.current.value)
         .then((docRef) => {
           console.log(docRef.id, emailRef.current.value)
