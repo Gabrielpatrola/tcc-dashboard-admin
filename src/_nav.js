@@ -62,13 +62,13 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Usuários',
-    to: '/theme/typography',
+    to: '/users',
     icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Listar Usuários',
-        to: '/base/accordion',
+        to: '/users',
       },
       {
         component: CNavItem,
