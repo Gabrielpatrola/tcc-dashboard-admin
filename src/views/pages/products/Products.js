@@ -45,6 +45,10 @@ const Products = () => {
     }
   }
 
+  const getBRL = (value) => {
+    return 'R$' + value.replace('.', ',')
+  }
+
   return (
     <>
       <div>
@@ -81,7 +85,7 @@ const Products = () => {
                               <CTableHeaderCell scope="row">{item.id}</CTableHeaderCell>
                               <CTableDataCell>{item.name}</CTableDataCell>
                               <CTableDataCell>{getCategory(item.category)}</CTableDataCell>
-                              <CTableDataCell>{item.value}</CTableDataCell>
+                              <CTableDataCell>{getBRL(item.value)}</CTableDataCell>
                               <CTableDataCell>{item.quantity}</CTableDataCell>
                             </CTableRow>
                           )
