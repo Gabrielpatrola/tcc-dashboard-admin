@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useState, useRef } from 'react'
 
 import {
   CAvatar,
@@ -14,6 +14,11 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
+  CForm,
+  CFormInput,
+  CInputGroup,
+  CInputGroupText,
+  CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
@@ -30,8 +35,11 @@ import {
   cifPl,
   cifUs,
   cilPeople,
+  cilLockLocked,
+  cilUser,
 } from '@coreui/icons'
 import { AppSidebar, AppFooter, AppHeader } from '../../components/index'
+import * as FirestoreService from '../../firebase'
 
 import avatar1 from 'src/assets/images/avatars/1.jpg'
 import avatar2 from 'src/assets/images/avatars/2.jpg'
@@ -43,6 +51,11 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 
 const Dashboard = () => {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
   const tableExample = [
     {
       avatar: { src: avatar1, status: 'success' },
@@ -134,6 +147,29 @@ const Dashboard = () => {
     },
   ]
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      setError('')
+      setLoading(true)
+      console.log('aq', emailRef.current.value, passwordRef.current.value)
+     
+     
+      FirestoreService.createGroceryList(emailRef.current.value, passwordRef.current.value)
+        .then((docRef) => {
+          console.log(docRef.id, emailRef.current.value)
+        })
+        .catch((reason) => console.log(reason))
+
+      //history.push('/dashboard')
+    } catch {
+      setError('Failed to log in')
+    }
+
+    setLoading(false)
+  }
+
   return (
     <>
       <div>
@@ -208,6 +244,46 @@ const Dashboard = () => {
                       </CTableBody>
                     </CTable>
                   </CCardBody>
+                  <CForm onSubmit={handleSubmit}>
+                    <h1>Login</h1>
+                    <p className="text-medium-emphasis">Sign In to your account</p>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilUser} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="text"
+                        placeholder="Username"
+                        autoComplete="username"
+                        ref={emailRef}
+                        required
+                      />
+                    </CInputGroup>
+                    <CInputGroup className="mb-4">
+                      <CInputGroupText>
+                        <CIcon icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
+                        type="text"
+                        ref={passwordRef}
+                        required
+                        placeholder="Password"
+                        autoComplete="current-password"
+                      />
+                    </CInputGroup>
+                    <CRow>
+                      <CCol xs={6}>
+                        <CButton color="primary" className="px-4" type="submit">
+                          Login
+                        </CButton>
+                      </CCol>
+                      <CCol xs={6} className="text-right">
+                        <CButton color="link" className="px-0">
+                          Forgot password?
+                        </CButton>
+                      </CCol>
+                    </CRow>
+                  </CForm>
                 </CCard>
               </CCol>
             </CRow>
