@@ -12,6 +12,7 @@ const loading = (
 
 // Pages
 const Login = React.lazy(() => import('../views/pages/login/Login'))
+const Register = React.lazy(() => import('../views/pages/register/Register'))
 const Dashboard = React.lazy(() => import('../views/pages/dashboard/Dashboard'))
 const ProductsCreate = React.lazy(() => import('../views/pages/products/ProductsCreate'))
 const Products = React.lazy(() => import('../views/pages/products/Products'))
@@ -32,6 +33,7 @@ class App extends Component {
               <PrivateRoute exact path="/products" name="products" component={Products} />
               <PrivateRoute exact path="/dashboard" name="dashboard" component={Dashboard} />
               <Route path="/login" exact component={Login} />
+              <Route path="/register" exact component={Register} />
               <Route path="*" component={Page404} />
             </Switch>
           </AuthProvider>
