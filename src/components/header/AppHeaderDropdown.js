@@ -18,6 +18,7 @@ import { useHistory } from 'react-router-dom'
 const AppHeaderDropdown = () => {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('')
 
   async function handleLogout() {
