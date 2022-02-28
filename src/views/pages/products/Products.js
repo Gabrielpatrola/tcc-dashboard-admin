@@ -12,6 +12,7 @@ import {
   CTableHeaderCell,
   CTableBody,
   CTableDataCell,
+  CCardHeader,
 } from '@coreui/react'
 import { AppSidebar, AppFooter, AppHeader } from '../../../components/index'
 import { useProducts } from '../../../contexts/ProductsContext'
@@ -60,10 +61,8 @@ const Products = () => {
             <CRow>
               <CCol xs>
                 <CCard className="mb-4">
+                  <CCardHeader> Lista de produtos</CCardHeader>
                   <CContainer>
-                    <h4 id="traffic" className="card-title mb-2">
-                      Lista de produtos
-                    </h4>
                     <div className="small text-medium-emphasis mb-2">
                       Aqui estão todos os produtos cadastrados
                     </div>
