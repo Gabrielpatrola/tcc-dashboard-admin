@@ -22,7 +22,7 @@ export function useUsers() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((item) => {
-        addDoc(usersDbRef, {
+        return addDoc(usersDbRef, {
           created: serverTimestamp(),
           name: item.user.displayName,
           email: item.user.email,
