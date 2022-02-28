@@ -51,15 +51,17 @@ const Login = () => {
                 <CCardBody>
                   <CForm onSubmit={handleSubmit}>
                     <h1>Login</h1>
-                    <p className="text-medium-emphasis">Sign In to your account</p>
+                    <p className="text-medium-emphasis">
+                      Faça o login utilizando seu e-mail e senha.
+                    </p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
                       <CFormInput
                         type="email"
-                        placeholder="Username"
-                        autoComplete="username"
+                        placeholder="e-mail"
+                        autoComplete="e-mail"
                         ref={emailRef}
                         required
                       />
@@ -72,8 +74,8 @@ const Login = () => {
                         type="password"
                         ref={passwordRef}
                         required
-                        placeholder="Password"
-                        autoComplete="current-password"
+                        placeholder="senha"
+                        autoComplete="senha"
                       />
                     </CInputGroup>
                     <CRow>
@@ -84,7 +86,7 @@ const Login = () => {
                       </CCol>
                       <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
-                          Forgot password?
+                          Esqueceu a senha?
                         </CButton>
                       </CCol>
                     </CRow>
@@ -93,7 +95,7 @@ const Login = () => {
               </CCard>
               <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
-                  <div>
+                  {/*  <div>
                     <h2>Sign up</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -104,7 +106,7 @@ const Login = () => {
                         Register Now!
                       </CButton>
                     </Link>
-                  </div>
+                  </div> */}
                 </CCardBody>
               </CCard>
             </CCardGroup>
