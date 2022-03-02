@@ -34,11 +34,11 @@ const _nav = [
         name: 'Criar Produto',
         to: '/products/create',
       },
-      {
+      /* {
         component: CNavItem,
         name: 'Editar Produto',
         to: '/base/accordion',
-      },
+      }, */
     ],
   },
   {
@@ -50,13 +50,13 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Listar Pedidos',
-        to: '/base/accordion',
+        to: '/orders',
       },
-      {
+      /*   {
         component: CNavItem,
         name: 'Editar Pedido',
         to: '/base/accordion',
-      },
+      }, */
     ],
   },
   {
@@ -75,11 +75,11 @@ const _nav = [
         name: 'Criar Usuário',
         to: '/users/create',
       },
-      {
+      /*  {
         component: CNavItem,
         name: 'Editar Usuário',
         to: '/base/accordion',
-      },
+      }, */
     ],
   },
 ]

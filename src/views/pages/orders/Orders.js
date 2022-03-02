@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import {
   CCard,
@@ -16,38 +15,31 @@ import {
   CCardHeader,
 } from '@coreui/react'
 import { AppSidebar, AppFooter, AppHeader } from '../../../components/index'
-import { useProducts } from '../../../contexts/ProductsContext'
+import { useOrders } from '../../../contexts/OrdersContext'
 
 import getBrl from '../../../utils/getBrl'
 
-const Products = () => {
-  const [products, setProducts] = useState([])
+const Orders = () => {
+  const [orders, setOrders] = useState([])
+  const [total, setTotal] = useState(0)
 
   /** Contexts */
-  const { getProducts } = useProducts()
+  const { getOrders } = useOrders()
 
   useEffect(() => {
-    getProducts()
+    getOrders()
       .then((items) => {
-        setProducts(items)
+        console.log(items)
+        setOrders(items)
+
+        const teste = orders.map((item) => {
+          return item.amount
+        })
+
+        setTotal(teste.reduce((partialSum, a) => partialSum + a, 0))
       })
       .catch((error) => console.log(error))
   }, [])
-
-  const getCategory = (value) => {
-    switch (value) {
-      case '1':
-        return 'Comida'
-      case '2':
-        return 'Bebida'
-      case '3':
-        return 'Sobremesa'
-      case '4':
-        return 'Combo'
-      default:
-        return 'Comida'
-    }
-  }
 
   return (
     <>
@@ -60,36 +52,36 @@ const Products = () => {
             <CRow>
               <CCol xs>
                 <CCard className="mb-4">
-                  <CCardHeader> Lista de produtos</CCardHeader>
+                  <CCardHeader> Lista de Pedidos</CCardHeader>
                   <CContainer>
                     <div className="small text-medium-emphasis mb-2">
-                      Aqui estão todos os produtos cadastrados
+                      Aqui estão todos os pedidos realizados!
                     </div>
                     <CTable>
                       <CTableHead>
                         <CTableRow>
                           <CTableHeaderCell scope="col">#</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Nome</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Categoria</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Usuário</CTableHeaderCell>
                           <CTableHeaderCell scope="col">Valor</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Quantidade</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Status</CTableHeaderCell>
                         </CTableRow>
                       </CTableHead>
                       <CTableBody>
-                        {products.map((item, index) => {
-                          // eslint-disable-next-line react/jsx-key
+                        {orders.map((item, index) => {
                           return (
                             <CTableRow key={index}>
                               <CTableHeaderCell scope="row">{item.id}</CTableHeaderCell>
-                              <CTableDataCell>{item.name}</CTableDataCell>
-                              <CTableDataCell>{getCategory(item.category)}</CTableDataCell>
-                              <CTableDataCell>{getBrl(item.value)}</CTableDataCell>
-                              <CTableDataCell>{item.quantity}</CTableDataCell>
+                              <CTableDataCell>{item.email}</CTableDataCell>
+                              <CTableDataCell>{getBrl(item.amount)}</CTableDataCell>
+                              <CTableDataCell>
+                                {item.status === 'Success' ? 'Finalizado' : 'Em andamento'}
+                              </CTableDataCell>
                             </CTableRow>
                           )
                         })}
                       </CTableBody>
                     </CTable>
+                    Total em vendas: {getBrl(total)}
                   </CContainer>
                 </CCard>
               </CCol>
@@ -102,4 +94,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default Orders

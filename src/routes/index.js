@@ -19,6 +19,7 @@ const Products = React.lazy(() => import('../views/pages/products/Products'))
 const Page404 = React.lazy(() => import('../views/pages/page404/Page404'))
 const Users = React.lazy(() => import('../views/pages/users/Users'))
 const UsersCreate = React.lazy(() => import('../views/pages/users/UsersCreate'))
+const Orders = React.lazy(() => import('../views/pages/orders/Orders'))
 
 class App extends Component {
   render() {
@@ -36,6 +37,7 @@ class App extends Component {
               />
               <PrivateRoute exact path="/users" name="users" component={Users} />
               <PrivateRoute exact path="/users/create" name="usersCreate" component={UsersCreate} />
+              <PrivateRoute exact path="/orders" name="orders" component={Orders} />
               <PrivateRoute exact path="/dashboard" name="dashboard" component={Dashboard} />
               <PrivateRoute exact path="/" name="home" component={Dashboard} />
               <Route path="/login" exact component={Login} />
