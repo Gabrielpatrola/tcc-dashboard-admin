@@ -1,5 +1,4 @@
 const getBrl = (value) => {
-  console.log(value)
   return 'R$' + value.toString().replace('.', ',')
 }
 

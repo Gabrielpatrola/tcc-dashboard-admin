@@ -29,13 +29,13 @@ const Orders = () => {
   useEffect(() => {
     getOrders()
       .then((items) => {
-        console.log(items)
         setOrders(items)
 
-        const teste = orders.map((item) => {
+        const teste = items.map((item) => {
           return item.amount
         })
 
+        console.log(teste)
         setTotal(teste.reduce((partialSum, a) => partialSum + a, 0))
       })
       .catch((error) => console.log(error))
